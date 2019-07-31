@@ -14,6 +14,8 @@ For contributing to this project follow next steps:
   * `camelCase` for functions names
   *  Don't use prefix `'a'` for functions arguments
   * `SCREAMING_SNAKE_CASE` reserved for macros
-  * As in [Google C++ Style Guide](https://google.github.io/styleguide/cppguide#Constant_Names)
+  * Constants as in [Google C++ Style Guide](https://google.github.io/styleguide/cppguide#Constant_Names)
+  * Files extensions for source and headers - `.cpp`/`.hpp` respectively
+  * `snake_case` for files naming
 
 3. Push your changes.
