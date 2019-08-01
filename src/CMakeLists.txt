@@ -14,7 +14,9 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
 # Collect C++ source files
-set(SOURCES main.cpp)
+set(SOURCES
+        io/video_image_supplier.cpp
+        main.cpp)
 
 # Build binary
 add_executable(${PROJECT_NAME} ${SOURCES})
