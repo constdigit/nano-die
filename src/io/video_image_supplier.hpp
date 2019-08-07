@@ -14,5 +14,10 @@ public:
    * Obtains next frame from images sequence.
    */
   cv::Mat getImage() override;
+
+private:
+  uint64_t count = 0;
+  uint64_t run_counter = 0;
+  cv::VideoCapture mVideoCapture;
 };
 }
