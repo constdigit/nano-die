@@ -28,7 +28,7 @@ io::VideoImageSupplier::getImage()
   
  if (mRun_counter != mEnd_frame) {
     mVideoCapture >> frame;
-    run_counter = mVideoCapture.get(CAP_PROP_POS_FRAMES);
+    mRun_counter = mVideoCapture.get(CAP_PROP_POS_FRAMES);
   } else {
     mVideoCapture.set(CAP_PROP_POS_FRAMES, mEnd_frame);
     mVideoCapture >> frame;
