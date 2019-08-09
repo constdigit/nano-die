@@ -5,13 +5,13 @@ set(CMAKE_CXX_STANDARD 17)
 
 # Manage Dependencies
 find_package(OpenCV REQUIRED)
-find_package(Qt5 COMPONENTS Core Quick Widgets REQUIRED)
-set(DEPENDENCIES ${OpenCV_LIBS} Qt5::Core Qt5::Widgets Qt5::Gui)
+#find_package(Qt5 COMPONENTS Core Quick Widgets REQUIRED)
+set(DEPENDENCIES ${OpenCV_LIBS})# Qt5::Core Qt5::Widgets Qt5::Gui)
 
 # Run Qt meta compiler
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTORCC ON)
+#set(CMAKE_AUTOMOC ON)
+#set(CMAKE_AUTOUIC ON)
+#set(CMAKE_AUTORCC ON)
 
 # Collect C++ source files
 set(SOURCES

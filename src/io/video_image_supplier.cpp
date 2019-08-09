@@ -17,6 +17,8 @@ io::VideoImageSupplier::VideoImageSupplier(std::string uri)
   {
     throw runtime_error("Can not open video");
   }
+  mCount = mVideoCapture.get(CAP_PROP_FRAME_COUNT);
+  mEnd_frame = mCount - 4;
 }
 
 

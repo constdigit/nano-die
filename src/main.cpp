@@ -5,7 +5,7 @@
 #include "io/video_image_supplier.hpp"
 
 int
-main(int argc, char const* argv[])
+main(int argc, char const* argv[1])
 {
   if (argc < 2) {
     std::cout << "Usage: nano_die path_to_video \n";
