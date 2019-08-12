@@ -5,38 +5,39 @@
 
 #include "video_image_supplier.hpp"
 
-
 using namespace std;
 using namespace cv;
 
 io::VideoImageSupplier::VideoImageSupplier(std::string uri)
   : ImageSupplier(uri)
 {
-  mVideoCapture.open(uri);       // open video
-  if (!mVideoCapture.isOpened()) // check if we succeeded
-  {
+  // open video
+  mVideoCapture.open(uri);
+  // check if we succeeded
+  if (!mVideoCapture.isOpened()) {
     throw runtime_error("Can not open video");
   }
-  mCount = mVideoCapture.get(CAP_PROP_FRAME_COUNT);
-  mEnd_frame = mCount - 4;
+  mVideoLength = mVideoCapture.get(CAP_PROP_FRAME_COUNT);
+  mLastFrameId = mVideoLength - 1;
 }
-
 
 cv::Mat
 io::VideoImageSupplier::getImage()
 {
-
   Mat frame;
-  
- if (mRun_counter != mEnd_frame) {
+
+  if (mCurrentFrameId != mLastFrameId) {
     mVideoCapture >> frame;
-    mRun_counter = mVideoCapture.get(CAP_PROP_POS_FRAMES);
+    mCurrentFrameId = mVideoCapture.get(CAP_PROP_POS_FRAMES);
   } else {
-    mVideoCapture.set(CAP_PROP_POS_FRAMES, mEnd_frame);
+    mVideoCapture.set(CAP_PROP_POS_FRAMES, mLastFrameId);
     mVideoCapture >> frame;
   }
-  
-  if (!frame.empty()) {
-    return frame;
+
+  if (frame.empty()) {
+    throw std::runtime_error(std::string{ "Get empty frame with id: " } +
+                             std::to_string(mCurrentFrameId));
   }
+
+  return frame;
 }

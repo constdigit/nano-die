@@ -16,9 +16,9 @@ public:
   cv::Mat getImage() override;
 
 private:
-  uint64_t mCount = 0;
-  uint64_t mRun_counter = 0;
-  uint64_t mEnd_frame = 0;
+  uint64_t mVideoLength{ 0 };
+  uint64_t mCurrentFrameId{ 0 };
+  uint64_t mLastFrameId{ 0 };
   cv::VideoCapture mVideoCapture;
 };
 }
