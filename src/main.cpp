@@ -1,24 +1,21 @@
 #include <iostream>
 
+#include <QtWidgets/QApplication>
 #include <opencv2/highgui.hpp>
 
+#include "core.hpp"
 #include "io/video_image_supplier.hpp"
 
 int
-main(int argc, char const* argv[1])
+main(int argc, char* argv[1])
 {
   if (argc < 2) {
     std::cout << "Usage: nano_die path_to_video \n";
     return 0;
   }
 
-  io::VideoImageSupplier videoImageSupplier{ std::string(argv[1]) };
+  QApplication qtApp(argc, argv);
+  core::Core controller(argv[1]);
 
-  cv::namedWindow("Image View", cv::WINDOW_NORMAL);
-  while (true) {
-    cv::imshow("Image View", videoImageSupplier.getImage());
-    cv::waitKey(40);
-  }
-
-  return 0;
+  return qtApp.exec();
 }

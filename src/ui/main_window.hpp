@@ -1,11 +1,26 @@
-//
-// Created by konstantin on 12.08.2019.
-//
+#pragma once
 
-#ifndef NANO_DIE_MAIN_WINDOW_HPP
-#define NANO_DIE_MAIN_WINDOW_HPP
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QWidget>
+#include <opencv2/core.hpp>
 
-class MainWindow
-{};
+namespace ui {
+class MainWindow : public QWidget
+{
+  Q_OBJECT
 
-#endif // NANO_DIE_MAIN_WINDOW_HPP
+public:
+  MainWindow();
+
+public slots:
+  void updateFrame(const QPixmap& source, const QPixmap& processed);
+
+private:
+  static constexpr int kMinimumLabelWidth = 640;
+  static constexpr int kMinimumLabelHeight = 360;
+  QHBoxLayout mLayout;
+  QLabel mSourceImageLabel;
+  QLabel mProcessedImageLabel;
+};
+}
