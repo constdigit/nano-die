@@ -13,6 +13,9 @@ MainWindow::MainWindow()
 
   setLayout(&mLayout);
   setWindowTitle("Nano Die");
+
+  // make two shortcuts that will be trigger switchToNextFilter and
+  // switchToPreviousFilter signals
 }
 
 void

@@ -16,6 +16,10 @@ public:
 public slots:
   void updateFrame(const QPixmap& source, const QPixmap& processed);
 
+signals:
+  void switchToNextFilter();
+  void switchToPreviousFilter();
+
 private:
   static constexpr int kMinimumLabelWidth = 640;
   static constexpr int kMinimumLabelHeight = 360;

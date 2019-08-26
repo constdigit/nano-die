@@ -21,6 +21,8 @@ public:
 private:
   ui::MainWindow mWindow;
   io::VideoImageSupplier mVideoImageSupplier;
+  // replace this field to vector of filters, add index of currently used
+  // filter
   std::unique_ptr<imgproc::BasicFilter> mFilter;
   uint32_t mDelay;
 
@@ -28,5 +30,6 @@ private:
 
 private slots:
   void showNextFrame();
+  // add here two slots for switching filters and implement them in cpp file
 };
 }

@@ -11,6 +11,8 @@ Core::Core(std::string uri, uint32_t fps)
 {
   mWindow.show();
   showNextFrame();
+
+  // connect signals from MainWindow to appropriate slots
 }
 
 QPixmap
@@ -24,6 +26,7 @@ void
 Core::showNextFrame()
 {
   auto sourceImage = mVideoImageSupplier.getImage();
+  // select here current filter from vector by id
   auto processedImage = mFilter->apply(sourceImage);
   mWindow.updateFrame(convertCvMatToQPixmap(sourceImage),
                       convertCvMatToQPixmap(processedImage));

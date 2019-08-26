@@ -11,6 +11,8 @@ namespace imgproc {
 class BasicFilter
 {
 public:
+  // implement this method for all filters (see SharpenFilter3x3 for example)
+  virtual std::string name() = 0;
   virtual cv::Mat apply(cv::Mat source) = 0;
   cv::Mat operator()(cv::Mat source) { return apply(std::move(source)); }
 };
@@ -25,6 +27,8 @@ public:
     cv::filter2D(source, sharpenedImage, CV_8UC1, kernel);
     return sharpenedImage;
   }
+
+  std::string name() override { return "Sharpen filter 3x3"; }
 };
 
 class NegativeFilter : public BasicFilter
@@ -92,4 +96,12 @@ public:
     return Erode;
   }
 };
+
+std::vector<std::unique_ptr<BasicFilter>>
+getAllFilters()
+{
+  return std::vector<std::unique_ptr<BasicFilter>>{
+    // comma-separated list of all filters
+  };
+}
 }
